@@ -1,6 +1,9 @@
 import React from 'react';
 
-function Header() {
+/**
+ * Header component
+ */
+const Header = () => {
   return (
     <div className="lh-copy">
       <h1 className="normal">

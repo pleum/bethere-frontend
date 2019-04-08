@@ -2,7 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 
-function NotFound() {
+/**
+ * NotFound component
+ */
+const NotFound = () => {
   return (
     <div>
       ไม่พบหน้าที่คุณต้องการ{' '}
@@ -11,6 +14,6 @@ function NotFound() {
       </Link>
     </div>
   );
-}
+};
 
 export default NotFound;

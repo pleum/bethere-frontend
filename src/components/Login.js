@@ -1,9 +1,13 @@
 import React from 'react';
-import Button from '../components/Button';
+import firebase from '../firebase';
+import Button from './Button';
 
-function Login() {
+/**
+ * Login component
+ */
+const Login = () => {
   const signInWithGoogle = () => {
-    console.log('Sign in with Google')
+    firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
   };
 
   return (
@@ -12,6 +16,6 @@ function Login() {
       Google
     </div>
   );
-}
+};
 
 export default Login;
