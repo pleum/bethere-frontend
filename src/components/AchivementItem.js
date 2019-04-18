@@ -1,14 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 /**
  * AchivementItem component
  */
-const AchivementItem = ({ item }) => {
+const AchivementItem = ({ achivement, id }) => {
   return (
-    <div className="mb2 pa2 flex bg-dark-gray black bg-animate hover-bg-light-red justify-between pointer br1">
-      <div>{item.name}</div>
-      <div>{item.required ? 'กิจกรรมบังคับ' : 'กิจกรรมเลือก'}</div>
-    </div>
+    <Link
+      to={{ pathname: '/event', search: '?id=' + id }}
+      className="mb2 pa2 flex bg-dark-gray black bg-animate hover-bg-light-red justify-between br1 link"
+    >
+      <div>{achivement.name}</div>
+      <div>{achivement.type}</div>
+    </Link>
   );
 };
 
