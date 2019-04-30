@@ -9,6 +9,8 @@ import Home from './components/Home';
 import Event from './components/Event';
 import Login from './components/Login';
 import NotFound from './components/NotFound';
+import CreateEvent from './components/CreateEvent';
+import Register from './components/Register';
 import AuthRouter from './components/AuthRoute';
 import { UserContext } from './context';
 
@@ -49,6 +51,18 @@ const App = () => {
               <AuthRouter
                 path="/event"
                 component={Event}
+                authed={isAuthed}
+                redirectPath="/login"
+              />
+              <AuthRouter
+                path="/event-new"
+                component={CreateEvent}
+                authed={isAuthed}
+                redirectPath="/login"
+              />
+              <AuthRouter
+                path="/event-register"
+                component={Register}
                 authed={isAuthed}
                 redirectPath="/login"
               />

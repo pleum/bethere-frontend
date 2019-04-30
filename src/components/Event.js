@@ -12,16 +12,25 @@ const Achivement = ({ location }) => {
   const achievementId = params.get('id');
   if (!achievementId) return <div>ไม่พบข้อมูล</div>;
 
-  const query = eventRef.where('achievementId', '==', achievementId);
+  const query = eventRef
+    .where('achievementId', '==', achievementId)
+    .orderBy('startDate', 'desc');
   const { error, loading, value = { empty: true } } = useCollection(query);
-
   return (
     <div>
       <div className="flex justify-between items-baseline">
         <h1 className="f3 normal">Event</h1>
-        <Link className="link light-red" to={{ pathname: '/' }}>
-          ย้อนกลับ
-        </Link>
+        <div>
+          <Link
+            className="link light-red mr3"
+            to={{ pathname: '/event-new', search: '?id=' + achievementId }}
+          >
+            สร้างกิจกรรมใหม่
+          </Link>
+          <Link className="link light-red" to={{ pathname: '/' }}>
+            ย้อนกลับ
+          </Link>
+        </div>
       </div>
       {error && <div>มีปัญหาในการดึงข้อมูล</div>}
       {loading ? (
@@ -31,7 +40,7 @@ const Achivement = ({ location }) => {
       ) : (
         <div>
           {value.docs.map(doc => (
-            <EventItem key={doc.id} event={doc.data()} />
+            <EventItem key={doc.id} id={doc.id} event={doc.data()} />
           ))}
         </div>
       )}
